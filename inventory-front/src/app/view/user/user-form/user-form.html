@@ -1,0 +1,48 @@
+<h2 mat-dialog-title>{{ isEdit ? 'Editar Usuario' : 'Agregar Usuario' }}</h2>
+<form [formGroup]="form" (ngSubmit)="save()">
+  
+  <mat-form-field *ngIf="isEdit" appearance="fill" class="full-width">
+    <mat-label>Id</mat-label>
+    <input matInput formControlName="idUser" />
+    <mat-error *ngIf="form.get('idUser')?.invalid && form.get('idUser')?.touched">
+      El Id es obligatorio
+    </mat-error>
+  </mat-form-field>
+  
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Nombre</mat-label>
+    <input matInput formControlName="name" />
+    <mat-error *ngIf="form.get('name')?.invalid && form.get('name')?.touched">
+      El nombre es obligatorio
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Edad</mat-label>
+    <input matInput type="number" formControlName="age" />
+    <mat-error *ngIf="form.get('age')?.invalid && form.get('age')?.touched">
+      Edad mínima 18 años
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Cargo</mat-label>
+    <mat-select formControlName="idPosition">
+      <mat-option *ngFor="let position of positions" [value]="position.idPosition">{{ position.name }}</mat-option>
+    </mat-select>
+    <mat-error *ngIf="form.get('idPosiotion')?.invalid && form.get('idPosition')?.touched">
+      El cargo es obligatorio
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Fecha de ingreso</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="entryDate">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+    <mat-error *ngIf="form.get('entryDate')?.invalid && form.get('entryDate')?.touched">
+      Fecha obligatoria
+    </mat-error>
+  </mat-form-field>
+  <div class="btn-row">
+    <button mat-flat-button color="primary" type="submit" [disabled]="form.invalid">{{ isEdit ? 'Actualizar' : 'Crear' }}</button>
+    <button mat-button type="button" (click)="close()">Cancelar</button>
+  </div>
+</form>

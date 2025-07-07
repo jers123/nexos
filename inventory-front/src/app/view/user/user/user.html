@@ -1,0 +1,49 @@
+<div class="list-container">
+  <h2>Usuarios
+    <button mat-raised-button color="primary" (click)="redirect('/position')">Cargos</button>
+    <button mat-raised-button color="primary" (click)="redirect('/product')">Mercancias</button>
+  </h2>
+  <button mat-raised-button color="primary" (click)="add()">Agregar usuario</button>
+  <table mat-table [dataSource]="users" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let row">{{ row.idUser }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="nombre">
+      <th mat-header-cell *matHeaderCellDef>Nombre</th>
+      <td mat-cell *matCellDef="let row">{{ row.name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="edad">
+      <th mat-header-cell *matHeaderCellDef>Edad</th>
+      <td mat-cell *matCellDef="let row">{{ row.age }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="cargo">
+      <th mat-header-cell *matHeaderCellDef>Cargo</th>
+      <td mat-cell *matCellDef="let row">{{ getPositionName(row.idPosition) }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="fechaIngreso">
+      <th mat-header-cell *matHeaderCellDef>Fecha Ingreso</th>
+      <td mat-cell *matCellDef="let row">{{ row.entryDate | date:'yyyy-MM-dd' }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="acciones">
+      <th mat-header-cell *matHeaderCellDef>Acciones</th>
+      <td mat-cell *matCellDef="let row">
+        <button mat-icon-button color="primary" (click)="edit(row)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="delete(row.idUser)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>

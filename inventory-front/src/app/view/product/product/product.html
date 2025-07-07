@@ -1,0 +1,62 @@
+<div class="list-container">
+  <h2>Mercancías
+    <button mat-raised-button color="primary" (click)="redirect('/position')">Cargos</button>
+    <button mat-raised-button color="primary" (click)="redirect('/user')">Usuarios</button>
+  </h2>
+  <div class="actions">
+    <button mat-raised-button color="primary" (click)="add()">Agregar Mercancía</button>
+    <button mat-stroked-button color="accent" (click)="openFilter()">Filtrar</button>
+  </div>
+  <table mat-table [dataSource]="products" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let row">{{ row.idProduct }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="nombre">
+      <th mat-header-cell *matHeaderCellDef>Nombre</th>
+      <td mat-cell *matCellDef="let row">{{ row.name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="cantidad">
+      <th mat-header-cell *matHeaderCellDef>Cantidad</th>
+      <td mat-cell *matCellDef="let row">{{ row.quantity }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="usuarioRegistroId">
+      <th mat-header-cell *matHeaderCellDef>Creado por</th>
+      <td mat-cell *matCellDef="let row">{{ getUserName(row.idUserCreate) }}</td>
+    </ng-container>
+    
+    <ng-container matColumnDef="fechaIngreso">
+      <th mat-header-cell *matHeaderCellDef>Fecha Ingreso</th>
+      <td mat-cell *matCellDef="let row">{{ row.entryDate | date:'yyyy-MM-dd' }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="usuarioActualizoId">
+      <th mat-header-cell *matHeaderCellDef>Actualizado por</th>
+      <td mat-cell *matCellDef="let row">{{ getUserName(row.idUserUpdate) }}</td>
+    </ng-container>
+    
+    <ng-container matColumnDef="fechaActualizacion">
+      <th mat-header-cell *matHeaderCellDef>Fecha Actualizacion</th>
+      <td mat-cell *matCellDef="let row">{{ row.updateDate | date:'yyyy-MM-dd' }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="acciones">
+      <th mat-header-cell *matHeaderCellDef>Acciones</th>
+      <td mat-cell *matCellDef="let row">
+        <button mat-icon-button color="primary" (click)="edit(row)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="delete(row.idProduct)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>

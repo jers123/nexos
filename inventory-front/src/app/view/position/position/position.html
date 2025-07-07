@@ -1,0 +1,34 @@
+<div class="list-container">
+  <h2>Cargos
+    <button mat-raised-button color="primary" (click)="redirect('/user')">Usuarios</button>
+    <button mat-raised-button color="primary" (click)="redirect('/product')">Mercancias</button>
+  </h2>
+  <button mat-raised-button color="primary" (click)="add()">Agregar cargo</button>
+  <table mat-table [dataSource]="positions" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let row">{{ row.idPosition }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="nombre">
+      <th mat-header-cell *matHeaderCellDef>Nombre</th>
+      <td mat-cell *matCellDef="let row">{{ row.name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="acciones">
+      <th mat-header-cell *matHeaderCellDef>Acciones</th>
+      <td mat-cell *matCellDef="let row">
+        <button mat-icon-button color="primary" (click)="edit(row)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="delete(row.idPosition)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div> 
