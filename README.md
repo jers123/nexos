@@ -8,7 +8,7 @@
 ## BACKEND
 
 La API (Backend) se ejecutaen el puerto: 8080
-esta bdesarrollda con Java 24, Spring Boot 3.5.3
+esta desarrollda con Java 24, Spring Boot 3.5.3
 es compatible con versiones de Java 17, 21 y 23
 
 ### Rutas de API
@@ -21,12 +21,12 @@ Ruta de acceso a la API de Usuarios: http://localhost:8080/inventory/user/**
 Ruta de acceso a la API de Mercancias: http://localhost:8080/inventory/product/**
 
 ##### Metodos HTTP
-Cada metodo tiene su path pero es el mismo para todas las rutas anteriores seria reemplazar "**" por el path correspondiente 
-Para crear se utilza POST con la URL/create
-Para obtener todos se utilza GET con la URL/get-all
-Para obtener por id se utilza GET con la URL/get-id/?
-Para actualizar se utilza PUT con la URL/update
-Para eliminar se utilza DELETE con la URL/delete/?
+Cada metodo tiene su path pero es el mismo para todas las rutas anteriores seria reemplazar "**" por el path correspondiente </br> 
+Para crear se utilza POST con la URL/create </br>
+Para obtener todos se utilza GET con la URL/get-all </br>
+Para obtener por id se utilza GET con la URL/get-id/? </br>
+Para actualizar se utilza PUT con la URL/update </br>
+Para eliminar se utilza DELETE con la URL/delete/? </br>
 
 ### Base de datos
 esta vinculado con cualquier version de PostgreSQL solo hay que cambiar los parametros de la base de datos en el archivo "application.properties" del proyecto 
