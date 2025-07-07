@@ -1,4 +1,4 @@
-# Pueba - Nexos Software
+# Prueba - Nexos Software
 
 ## Julian Enrique Rodriguez
 ### Ingeniero de siostemas
